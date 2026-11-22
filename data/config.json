@@ -113,21 +113,21 @@
     "_readme": "Each entry is one wave: enemy counts, speed/health multipliers the credits awarded for surviving it, and spawnWindowSeconds (all enemies spawn within this many seconds; lower = denser, harder). Waves after the list grow using beyondList.",
     "list": [
       { "soldier": 14,  "shieldSoldier": 0,  "ram": 0, "bomber": 0, "speedMultiplier": 1.00, "healthMultiplier": 1.0, "clearBonus": 25, "spawnWindowSeconds": 30 },
-      { "soldier": 21, "shieldSoldier": 0,  "ram": 0, "bomber": 0, "speedMultiplier": 1.03, "healthMultiplier": 1.0, "clearBonus": 30, "spawnWindowSeconds": 29 },
-      { "soldier": 21, "shieldSoldier": 5,  "ram": 0, "bomber": 0, "speedMultiplier": 1.06, "healthMultiplier": 1.0, "clearBonus": 35, "spawnWindowSeconds": 28 },
-      { "soldier": 25, "shieldSoldier": 11,  "ram": 0, "bomber": 0, "speedMultiplier": 1.09, "healthMultiplier": 1.0, "clearBonus": 40, "spawnWindowSeconds": 27 },
-      { "soldier": 25, "shieldSoldier": 14,  "ram": 4, "bomber": 0, "speedMultiplier": 1.12, "healthMultiplier": 1.0, "clearBonus": 45, "spawnWindowSeconds": 26 },
-      { "soldier": 28, "shieldSoldier": 18, "ram": 5, "bomber": 2, "speedMultiplier": 1.15, "healthMultiplier": 1.0, "clearBonus": 50, "spawnWindowSeconds": 24 },
-      { "soldier": 32, "shieldSoldier": 21, "ram": 7, "bomber": 4, "speedMultiplier": 1.18, "healthMultiplier": 1.0, "clearBonus": 55, "spawnWindowSeconds": 23 },
-      { "soldier": 35, "shieldSoldier": 25, "ram": 9, "bomber": 7, "speedMultiplier": 1.21, "healthMultiplier": 1.0, "clearBonus": 60, "spawnWindowSeconds": 22 },
-      { "soldier": 39, "shieldSoldier": 28, "ram": 11, "bomber": 9, "speedMultiplier": 1.25, "healthMultiplier": 1.0, "clearBonus": 65, "spawnWindowSeconds": 20 },
-      { "soldier": 44, "shieldSoldier": 32, "ram": 14, "bomber": 12, "speedMultiplier": 1.30, "healthMultiplier": 1.0, "clearBonus": 75, "spawnWindowSeconds": 18 }
+      { "soldier": 21, "shieldSoldier": 0,  "ram": 0, "bomber": 0, "speedMultiplier": 1.03, "healthMultiplier": 1.1, "clearBonus": 30, "spawnWindowSeconds": 29 },
+      { "soldier": 21, "shieldSoldier": 5,  "ram": 0, "bomber": 0, "speedMultiplier": 1.06, "healthMultiplier": 1.2, "clearBonus": 35, "spawnWindowSeconds": 28 },
+      { "soldier": 25, "shieldSoldier": 11,  "ram": 0, "bomber": 0, "speedMultiplier": 1.09, "healthMultiplier": 1.3, "clearBonus": 40, "spawnWindowSeconds": 27 },
+      { "soldier": 25, "shieldSoldier": 14,  "ram": 4, "bomber": 0, "speedMultiplier": 1.12, "healthMultiplier": 1.4, "clearBonus": 45, "spawnWindowSeconds": 26 },
+      { "soldier": 28, "shieldSoldier": 18, "ram": 5, "bomber": 2, "speedMultiplier": 1.15, "healthMultiplier": 1.5, "clearBonus": 50, "spawnWindowSeconds": 24 },
+      { "soldier": 32, "shieldSoldier": 21, "ram": 7, "bomber": 4, "speedMultiplier": 1.18, "healthMultiplier": 1.6, "clearBonus": 55, "spawnWindowSeconds": 23 },
+      { "soldier": 35, "shieldSoldier": 25, "ram": 9, "bomber": 7, "speedMultiplier": 1.21, "healthMultiplier": 1.7, "clearBonus": 60, "spawnWindowSeconds": 22 },
+      { "soldier": 39, "shieldSoldier": 28, "ram": 11, "bomber": 9, "speedMultiplier": 1.25, "healthMultiplier": 1.8, "clearBonus": 65, "spawnWindowSeconds": 20 },
+      { "soldier": 44, "shieldSoldier": 32, "ram": 14, "bomber": 12, "speedMultiplier": 1.30, "healthMultiplier": 1.9, "clearBonus": 75, "spawnWindowSeconds": 18 }
     ],
     "beyondList": {
       "countGrowthPerWave": 0.12,
       "speedIncreasePerWave": 0.03,
       "maxSpeedMultiplier": 1.8,
-      "healthIncreasePerWave": 0.05,
+      "healthIncreasePerWave": 0.1,
       "clearBonusIncreasePerWave": 5,
       "spawnWindowDecreasePerWave": 1,
       "minSpawnWindowSeconds": 12
