@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Voxel Defense</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <script type="importmap">
+    { "imports": { "three": "./vendor/three/three.module.min.js" } }
+  </script>
+</head>
+<body>
+  <canvas id="game"></canvas>
+
+  <!-- Loading -->
+  <div id="loading" class="screen dirt-bg">
+    <div class="loading-box">
+      <div class="mc-heading">Generating world</div>
+      <div class="loading-bar"><div class="loading-fill"></div></div>
+      <div class="loading-msg">Building terrain...</div>
+    </div>
+  </div>
+
+  <!-- Title screen -->
+  <div id="title-screen" class="screen hidden">
+    <div class="title-logo">
+      <div class="logo-text" data-text="VOXEL DEFENSE">VOXEL DEFENSE</div>
+      <div class="splash">Defend the castle!</div>
+    </div>
+    <div class="menu-buttons">
+      <button class="mc-btn wide" data-action="play">Play Game</button>
+      <button class="mc-btn wide" data-action="howto">How to Play</button>
+      <button class="mc-btn wide" data-action="options">Options...</button>
+    </div>
+    <div class="footer-left">Voxel Defense v1.0</div>
+    <div class="footer-right">Made with Three.js</div>
+  </div>
+
+  <!-- How to play -->
+  <div id="howto-screen" class="screen dirt-bg hidden">
+    <div class="mc-heading">How to Play</div>
+    <div class="howto-scroll">
+      <div class="howto-cols">
+        <div class="howto-col">
+          <h3>Rules</h3>
+          <ul id="howto-rules"></ul>
+          <h3>Controls</h3>
+          <ul>
+            <li><b>Left click</b> a tower to build or upgrade</li>
+            <li><b>Drag</b> / <b>WASD</b> to pan, <b>Wheel</b> to zoom</li>
+            <li><b>Space</b> start wave, <b>1/2/3</b> game speed</li>
+            <li><b>Esc</b> pause / close menus</li>
+          </ul>
+        </div>
+        <div class="howto-col">
+          <h3>Enemies</h3>
+          <div id="howto-enemies"></div>
+          <h3>Defenses</h3>
+          <div id="howto-defenses"></div>
+        </div>
+      </div>
+    </div>
+    <button class="mc-btn wide" data-action="back">Done</button>
+  </div>
+
+  <!-- Options -->
+  <div id="options-screen" class="screen dirt-bg hidden">
+    <div class="mc-heading">Options</div>
+    <div class="menu-buttons">
+      <button class="mc-btn wide" data-action="toggle-sound">Sound: ON</button>
+      <button class="mc-btn wide" data-action="toggle-graphics">Graphics: Fancy</button>
+      <button class="mc-btn wide" data-action="toggle-damage">Damage Numbers: ON</button>
+    </div>
+    <button class="mc-btn wide" data-action="back">Done</button>
+  </div>
+
+  <!-- HUD -->
+  <div id="hud" class="hidden">
+    <div id="bossbar">
+      <div class="bossbar-title">Castle</div>
+      <div class="bossbar-track"><div class="bossbar-fill"></div><div class="bossbar-notches"></div></div>
+    </div>
+
+    <div id="scoreboard">
+      <div class="sb-title">Voxel Defense</div>
+      <div class="sb-row"><span>Wave</span><span id="sb-wave" class="sb-val">1</span></div>
+      <div class="sb-row"><span id="sb-time-label">Time</span><span id="sb-time" class="sb-val">2:00</span></div>
+      <div class="sb-row"><span>Enemies</span><span id="sb-enemies" class="sb-val">0</span></div>
+      <div class="sb-row"><span>Kills</span><span id="sb-kills" class="sb-val">0</span></div>
+      <div class="sb-row"><span>Defenses</span><span id="sb-defenses" class="sb-val">0</span></div>
+    </div>
+
+    <div id="chat"></div>
+
+    <div id="bottom-hud">
+      <div id="actionbar"></div>
+      <button id="start-wave-btn" class="mc-btn">Start Wave 1</button>
+      <div id="status-row">
+        <div id="hearts"></div>
+        <div id="credits"><span class="credit-icon"></span><span id="credits-val">150</span></div>
+      </div>
+      <div id="xpbar"><div id="xpbar-fill"></div></div>
+      <div id="hotbar"></div>
+    </div>
+
+    <div id="title-text">
+      <div class="tt-main"></div>
+      <div class="tt-sub"></div>
+    </div>
+  </div>
+
+  <!-- Tower panel (inventory style) -->
+  <div id="panel" class="mc-panel hidden">
+    <div class="panel-head">
+      <span class="panel-title">Tower</span>
+      <button class="panel-close" title="Close (Esc)">&times;</button>
+    </div>
+    <div class="panel-body"></div>
+  </div>
+
+  <!-- Pause -->
+  <div id="pause-screen" class="screen dim-bg hidden">
+    <div class="mc-heading">Game Menu</div>
+    <div class="menu-buttons">
+      <button class="mc-btn wide" data-action="resume">Back to Game</button>
+      <button class="mc-btn wide" data-action="howto">How to Play</button>
+      <button class="mc-btn wide" data-action="options">Options...</button>
+      <button class="mc-btn wide" data-action="quit">Quit to Title</button>
+    </div>
+  </div>
+
+  <!-- Game over -->
+  <div id="gameover-screen" class="screen death-bg hidden">
+    <div class="death-title">The Castle Has Fallen!</div>
+    <div class="death-sub">You survived <span id="go-waves">0</span> waves</div>
+    <div class="death-score">Score: <span id="go-score">0</span></div>
+    <div class="menu-buttons">
+      <button class="mc-btn wide" data-action="retry">Try Again</button>
+      <button class="mc-btn wide" data-action="title">Title Screen</button>
+    </div>
+  </div>
+
+  <div id="floaters"></div>
+  <div id="tooltip" class="mc-tooltip hidden"></div>
+
+  <noscript><div class="screen dirt-bg"><div class="mc-heading">Voxel Defense needs JavaScript enabled.</div></div></noscript>
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>

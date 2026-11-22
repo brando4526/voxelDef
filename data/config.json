@@ -1,0 +1,136 @@
+{
+  "_readme": "Voxel Defense gameplay data. Edit values and reload the page. Times are in seconds, distances in world blocks, speeds in blocks per second. Damage upgrades add damageBonus x base damage per level. Speed upgrades multiply the fire interval by intervalMultiplier per level.",
+
+  "game": {
+    "startingCredits": 150,
+    "castleMaxHealth": 1000,
+    "waveDurationSeconds": 120,
+    "spawnWindowSeconds": 30,
+    "firstSpawnDelaySeconds": 1,
+    "fire": {
+      "damagePerSecond": 2,
+      "durationSeconds": 5
+    },
+    "creditsPerDifficulty": {
+      "easy": 1,
+      "medium": 2,
+      "hard": 3
+    }
+  },
+
+  "enemies": {
+    "soldier": {
+      "name": "Foot Soldier",
+      "description": "Swordsman without a shield.",
+      "difficulty": "easy",
+      "hitpoints": 20,
+      "speed": 1.6,
+      "castleDamage": 10,
+      "attackInterval": 1.5
+    },
+    "shieldSoldier": {
+      "name": "Shielded Soldier",
+      "description": "Swordsman carrying a shield.",
+      "difficulty": "medium",
+      "hitpoints": 40,
+      "speed": 1.35,
+      "castleDamage": 10,
+      "attackInterval": 1.5
+    },
+    "ram": {
+      "name": "Battering Ram",
+      "description": "Wheeled ram that pounds the castle gate.",
+      "difficulty": "medium",
+      "hitpoints": 100,
+      "speed": 0.9,
+      "castleDamage": 50,
+      "attackInterval": 3.0
+    },
+    "bomber": {
+      "name": "Suicide Bomber",
+      "description": "Carries TNT and explodes on reaching the castle.",
+      "difficulty": "hard",
+      "hitpoints": 30,
+      "speed": 1.5,
+      "castleDamage": 100
+    }
+  },
+
+  "defenses": {
+    "archer": {
+      "name": "Archers",
+      "description": "Fast, cheap single-target damage. Up to 5 archers per tower.",
+      "cost": 120,
+      "damage": 10,
+      "fireInterval": 1.4,
+      "range": 10,
+      "projectileSpeed": 18,
+      "projectileGravity": 18,
+      "startingUnits": 1,
+      "upgrades": {
+        "extraArcher": { "name": "Recruit Archer", "description": "Adds another archer to this tower.", "cost": 50, "maxLevel": 4 },
+        "speed": { "name": "Quick Draw", "description": "Reduces firing interval.", "cost": 25, "maxLevel": 5, "intervalMultiplier": 0.85 },
+        "damage": { "name": "Sharpened Arrows", "description": "+50% base damage per level.", "cost": 25, "maxLevel": 5, "damageBonus": 0.5 },
+        "fire": { "name": "Flaming Arrows", "description": "Arrows set enemies on fire.", "cost": 25, "maxLevel": 1 }
+      }
+    },
+    "ballista": {
+      "name": "Ballista",
+      "description": "Heavy bolts with long range.",
+      "cost": 200,
+      "damage": 30,
+      "fireInterval": 2.6,
+      "range": 13,
+      "projectileSpeed": 28,
+      "projectileGravity": 6,
+      "upgrades": {
+        "speed": { "name": "Winch Gears", "description": "Reduces firing interval.", "cost": 50, "maxLevel": 5, "intervalMultiplier": 0.85 },
+        "damage": { "name": "Iron Bolts", "description": "+50% base damage per level.", "cost": 50, "maxLevel": 5, "damageBonus": 0.5 },
+        "fire": { "name": "Flaming Bolts", "description": "Bolts set enemies on fire.", "cost": 50, "maxLevel": 1 }
+      }
+    },
+    "catapult": {
+      "name": "Catapult",
+      "description": "Slow boulders that crush groups of enemies.",
+      "cost": 250,
+      "damage": 50,
+      "fireInterval": 4.5,
+      "range": 15,
+      "minRange": 2.5,
+      "projectileSpeed": 13,
+      "projectileGravity": 22,
+      "splashRadius": 2.0,
+      "upgrades": {
+        "speed": { "name": "Tension Ropes", "description": "Reduces firing interval.", "cost": 50, "maxLevel": 5, "intervalMultiplier": 0.85 },
+        "damage": { "name": "Heavier Boulders", "description": "+50% base damage per level.", "cost": 50, "maxLevel": 5, "damageBonus": 0.5 },
+        "area": { "name": "Shatter Stones", "description": "Increases splash radius.", "cost": 50, "maxLevel": 3, "radiusBonus": 0.35 },
+        "fire": { "name": "Flaming Ammo", "description": "Boulders set enemies on fire.", "cost": 50, "maxLevel": 1 }
+      }
+    }
+  },
+
+  "waves": {
+    "_readme": "Each entry is one wave: enemy counts, speed/health multipliers the credits awarded for surviving it, and spawnWindowSeconds (all enemies spawn within this many seconds; lower = denser, harder). Waves after the list grow using beyondList.",
+    "list": [
+      { "soldier": 14,  "shieldSoldier": 0,  "ram": 0, "bomber": 0, "speedMultiplier": 1.00, "healthMultiplier": 1.0, "clearBonus": 25, "spawnWindowSeconds": 30 },
+      { "soldier": 21, "shieldSoldier": 0,  "ram": 0, "bomber": 0, "speedMultiplier": 1.03, "healthMultiplier": 1.0, "clearBonus": 30, "spawnWindowSeconds": 29 },
+      { "soldier": 21, "shieldSoldier": 5,  "ram": 0, "bomber": 0, "speedMultiplier": 1.06, "healthMultiplier": 1.0, "clearBonus": 35, "spawnWindowSeconds": 28 },
+      { "soldier": 25, "shieldSoldier": 11,  "ram": 0, "bomber": 0, "speedMultiplier": 1.09, "healthMultiplier": 1.0, "clearBonus": 40, "spawnWindowSeconds": 27 },
+      { "soldier": 25, "shieldSoldier": 14,  "ram": 4, "bomber": 0, "speedMultiplier": 1.12, "healthMultiplier": 1.0, "clearBonus": 45, "spawnWindowSeconds": 26 },
+      { "soldier": 28, "shieldSoldier": 18, "ram": 5, "bomber": 2, "speedMultiplier": 1.15, "healthMultiplier": 1.0, "clearBonus": 50, "spawnWindowSeconds": 24 },
+      { "soldier": 32, "shieldSoldier": 21, "ram": 7, "bomber": 4, "speedMultiplier": 1.18, "healthMultiplier": 1.0, "clearBonus": 55, "spawnWindowSeconds": 23 },
+      { "soldier": 35, "shieldSoldier": 25, "ram": 9, "bomber": 7, "speedMultiplier": 1.21, "healthMultiplier": 1.0, "clearBonus": 60, "spawnWindowSeconds": 22 },
+      { "soldier": 39, "shieldSoldier": 28, "ram": 11, "bomber": 9, "speedMultiplier": 1.25, "healthMultiplier": 1.0, "clearBonus": 65, "spawnWindowSeconds": 20 },
+      { "soldier": 44, "shieldSoldier": 32, "ram": 14, "bomber": 12, "speedMultiplier": 1.30, "healthMultiplier": 1.0, "clearBonus": 75, "spawnWindowSeconds": 18 }
+    ],
+    "beyondList": {
+      "countGrowthPerWave": 0.12,
+      "speedIncreasePerWave": 0.03,
+      "maxSpeedMultiplier": 1.8,
+      "healthIncreasePerWave": 0.05,
+      "clearBonusIncreasePerWave": 5,
+      "spawnWindowDecreasePerWave": 1,
+      "minSpawnWindowSeconds": 12
+    }
+  }
+}
